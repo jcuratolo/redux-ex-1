@@ -3,8 +3,7 @@ import TodoApp from './todoApp.js';
 
 export default class Header extends Component {
   addTodo() {
-    console.log(this.input.value);
-    this.props.onAddOne(this.input.value);
+    this.props.onAddTodo(this.input.value);
   }
   render() {
     console.log('header rendering');

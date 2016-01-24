@@ -17,10 +17,11 @@ export default class App extends Component {
 
   update() {
     console.log('omg brittany im totally updating right now');
-    this.setState(store.getState());
+    const storeState = store.getState();
+    this.setState(storeState);
   }
 
-  addOne(inputValue) {
+  addTodo(inputValue) {
     store.dispatch({
         type: 'ADD_TODO',
         text: inputValue
@@ -31,7 +32,7 @@ export default class App extends Component {
     const { todos } = this.state;
     return (
       <div>
-        <Header onAddOne={ this.addOne.bind(this) }/>
+        <Header onAddTodo={ this.addTodo.bind(this) }/>
         <TodoList todos={ todos }/>
         <Footer />
       </div>
