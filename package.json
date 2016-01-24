@@ -3,19 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify src/app.js --outfile public/bundle.js -d -v -t [ babelify --presets [ es2015 react ] ]",
-    "build-watch": "watchify src/app.js --outfile public/bundle.js -d -t [ babelify --presets [ es2015 react ] ]",
+    "test": "mocha --compilers js:babel-core",
+    "build": "browserify src/index.js --outfile public/bundle.js -d -v -t [ babelify --presets [ es2015 react ] ]",
+    "build-watch": "watchify src/index.js --outfile public/bundle.js -d -v -t [ babelify --presets [ es2015 react ] ]",
     "run-watch": "nodemon public/bundle.js",
     "live-reload": "live-reload --port 9091 public/",
-    "serve-dev": "http-server -p 9090 public/",
-    "dev": "npm run build-watch & npm run live-reload & npm run serve-dev",
-    "dev-console": "npm run build-watch & npm run run-watch"
+    "www": "http-server -p 9090 public/",
+    "start": "npm run build-watch & npm run live-reload & npm run www"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-core": "^6.4.5",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.2.0",
@@ -24,6 +24,8 @@
     "live-reload": "^1.1.0",
     "nodemon": "^1.8.1",
     "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-redux": "^4.0.6",
     "reactify": "^1.1.1",
     "redux": "^3.0.5",
     "watchify": "^3.7.0"
